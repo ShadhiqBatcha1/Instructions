@@ -7,7 +7,7 @@ import UIKit
 // swiftlint:disable file_length
 // MARK: - Main Class
 /// Handles a set of coach marks, and display them successively.
-class CoachMarksViewController: UIViewController {
+public class CoachMarksViewController: UIViewController {
     // MARK: - Private properties
     private var onGoingSizeChange = false
     private var presentationFashion: PresentationFashion = .window {
@@ -65,7 +65,7 @@ class CoachMarksViewController: UIViewController {
 
     // MARK: - Overridden properties
     ///
-    override var preferredStatusBarStyle: UIStatusBarStyle {
+    public override var preferredStatusBarStyle: UIStatusBarStyle {
         if let statusBarStyle = customStatusBarStyle {
             return statusBarStyle
         } else if overlayManager.backgroundColor == .clear {
@@ -75,7 +75,7 @@ class CoachMarksViewController: UIViewController {
         }
     }
 
-    override var shouldAutorotate: Bool {
+    public override var shouldAutorotate: Bool {
         switch rotationStyle {
         case .systemDefined: return super.shouldAutorotate
         case .automatic: return true
@@ -83,7 +83,7 @@ class CoachMarksViewController: UIViewController {
         }
     }
 
-    override var prefersStatusBarHidden: Bool {
+    public override var prefersStatusBarHidden: Bool {
         switch statusBarVisibility {
         case .systemDefined: return super.prefersStatusBarHidden
         case .hidden: return true
@@ -91,7 +91,7 @@ class CoachMarksViewController: UIViewController {
         }
     }
 
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    public override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         switch interfaceOrientations {
         case .systemDefined: return super.supportedInterfaceOrientations
         case .userDefined(let orientations): return orientations
@@ -112,14 +112,14 @@ class CoachMarksViewController: UIViewController {
     }
 
     // Called after the view was loaded.
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.clear
     }
 
-    override func loadView() { view = PassthroughView() }
+    public override func loadView() { view = PassthroughView() }
 
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         overlayManager.updateStyle(with: traitCollection)
     }
@@ -316,7 +316,7 @@ extension CoachMarksViewController {
 // MARK: - Change Events
 extension CoachMarksViewController {
     // MARK: - Overrides
-    override func viewWillTransition(to size: CGSize,
+    public override func viewWillTransition(to size: CGSize,
                                      with coordinator: UIViewControllerTransitionCoordinator) {
         if currentCoachMarkView == nil { return }
         if onGoingSizeChange { return }
